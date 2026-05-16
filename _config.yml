@@ -1,12 +1,12 @@
 #-------------------------------
 # General Site Settings
 title: Hella Consulting
-bio: "Web3 Native Fractional engineering, DevRel, Digital Marketing & Strategy"
-description: "Web3 Native Fractional engineering, DevRel, Digital Marketing & Strategy"
+bio: "Web3-Native Fractional engineering, devRel & consulting specialized in Fintech, Blockchain, and Web3"
+description: "Fractional engineering, DevRel & consulting specialized in Fintech, Blockchain, and Web3"
 reading_time: false
 tiled_bg: false # Set this true if you want to tile your background image, otherwise it will be covered
 locale: en_US
-url: https://www.hella.website
+url: https://www.hellalabs.dev
 
 #-------------------------------
 # Build Settings

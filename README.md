@@ -17,7 +17,14 @@ Base website for [Hella](https://www.hella.website/).  Built with Jekyll and bar
 
 ## 🚀 Overview
 
-**Hella Site Base** is a web3-focused website with best practices for performance, security, developer experience, and SEO.  Fast, lean and to the point.
+**Hella Site Base** is a web3-focused website showcasing our expertise in performance, security, and developer experience.
+
+We are active contributors to the Ethereum ecosystem, maintaining open-source projects that set the standard for Web3 test automation and developer tooling:
+- **[Foundry Anvil Testcontainers Nodejs](https://github.com/hella-web3/foundryanvil-testcontainers-nodejs)**: High-fidelity Anvil node orchestration for Node.js E2E tests.
+- **[Wiremock Testcontainers Nodejs](https://github.com/hella-web3/wiremock-testcontainers-nodejs)**: Fluent TypeScript API for WireMock, optimizing test isolation and speed.
+- **[Ethereum Transaction Explorer TUI](https://github.com/anataliocs/etherscan-tui-go)**: A developer-centric terminal UI for exploring EVM transactions.
+
+We leverage this deep technical expertise to provide **Fractional Engineering Services** for emerging Web3 startups.
 
 **Tech Stack:**
 - Jekyll
@@ -104,7 +111,7 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 
 <div align="center">
 
-_Made with ❤️ by the Hella-Web3 team_
+_Made with ❤️ by the Hella Labs team_
 
 Accelerating the transition to a Web3 future.
 
