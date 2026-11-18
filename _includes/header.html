@@ -23,8 +23,17 @@
           <div class="main-nav__box">
             <ul class="nav__list list-reset">
               {% for item in site.data.settings.menu_settings.menu_items %}
-              <li class="nav__item">
-                <a href="{{ item.url | relative_url }}" class="nav__link{% if page.url == item.url %} active-link{% endif %}">{{ item.title }}</a>
+              <li class="nav__item{% if item.sub_items %} dropdown{% endif %}">
+                <a href="{{ item.url | relative_url }}" class="nav__link{% if page.url == item.url %} active-link{% endif %}">{{ item.title }}{% if item.sub_items %} <i class="fa-solid fa-chevron-down"></i>{% endif %}</a>
+                {% if item.sub_items %}
+                <ul class="dropdown-menu list-reset">
+                  {% for sub_item in item.sub_items %}
+                  <li class="dropdown-item">
+                    <a href="{{ sub_item.url | relative_url }}" class="nav__link">{{ sub_item.title }}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
               </li>
               {% endfor %}
             </ul>

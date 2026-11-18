@@ -1,0 +1,60 @@
+---
+layout: default
+---
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "{{ page.title | default: site.data.settings.title }}",
+        "description": "{{ page.description | default: site.data.settings.description }}",
+        "url": "{{ page.url | absolute_url }}"
+    }
+</script>
+
+<!-- begin service-page -->
+<div class="container">
+  <div class="row">
+    <div class="col col-8 col-d-12">
+      <div class="service-header">
+        {% if page.image %}
+        <div class="page-image">
+          <img class="lazy" data-src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+        </div>
+        {% endif %}
+        {% if page.service_icon %}
+        <div class="services__icon">
+          <i class="{{ page.service_icon }}"></i>
+        </div>
+        {% endif %}
+
+        <h1 class="page-title">{{ page.title | escape }}</h1>
+
+        <hr class="service-hr">
+
+        {% if page.service_type %}
+        <div class="service-type">
+          <strong>
+            {% if page.type_icon %}<i class="{{ page.type_icon }}"></i>{% endif %}
+            {{ page.service_type }}
+          </strong>
+        </div>
+        {% endif %}
+      </div>
+
+      <article class="page">
+        <div class="page__content">
+          {{ content }}
+        </div>
+      </article>
+    </div>
+    <div class="col col-4 col-d-12">
+      <aside class="sidebar">
+        {% include sidebar-widgets/widget-subscribe.html %}
+        {% include sidebar-widgets/widget-social.html %}
+        {% include sidebar-widgets/widget-featured-posts.html %}
+        {% include sidebar-widgets/widget-tags.html %}
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- end service-page -->

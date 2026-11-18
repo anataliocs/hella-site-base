@@ -143,3 +143,70 @@ h4 {
     margin-top: 8px;
   }
 }
+
+.service-header {
+  text-align: center;
+  margin-bottom: 40px;
+  .page-image {
+    margin-bottom: 32px;
+    img {
+      border-radius: 16px;
+      width: 100%;
+    }
+  }
+  .services__icon {
+    font-size: 3rem;
+    margin: 0 auto 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .page-title {
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+    color: var(--heading-font-color);
+  }
+
+  .service-hr {
+    margin: 20px auto;
+    width: 60px;
+    border: 0;
+    height: 2px;
+    background: var(--gradient-color);
+  }
+
+  .service-type {
+    font-size: 1.2rem;
+    strong {
+      background: var(--gradient-color);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+}
+
+.cta-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--background-alt-color-2);
+  border-radius: 16px;
+  border-left: 4px solid var(--primary-color);
+  box-shadow: var(--box-shadow-1);
+
+  h3 {
+    margin-top: 0;
+    color: var(--heading-font-color);
+  }
+
+  p {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+  }
+}
