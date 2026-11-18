@@ -31,6 +31,13 @@ menu_settings:
           title: 'Technical Articles'
         - url: '/services/gtm-launch-package/'
           title: 'GTM Launch Package'
+    - url: '/open-source/'
+      title: 'Open Source'
+      sub_items:
+        - url: '/open-source/foundry-anvil-testcontainers/'
+          title: 'Foundry Anvil Testcontainers'
+        - url: '/open-source/wiremock-testcontainers/'
+          title: 'WireMock Testcontainers'
     - url: '/team/'
       title: 'Team'
     - url: '/contact/'

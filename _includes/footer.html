@@ -54,6 +54,20 @@
           </div>
         </div>
 
+        <div class="col col-2 col-d-6 col-m-12">
+          <div class="footer-nav">
+            <h3 class="footer__title">Services</h3>
+            <div class="footer-nav__list">
+              {% for item in site.data.settings.menu_settings.menu_items %}
+                {% if item.title == "Services" %}
+                  {% for sub_item in item.sub_items %}
+                    <a class="footer-nav__link" href="{{ sub_item.url | relative_url }}">{{ sub_item.title }}</a>
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
         {% if site.data.settings.menu_settings.menu_items %}
         <div class="col col-2 col-d-6 col-m-12">
           <div class="footer-nav__left">
