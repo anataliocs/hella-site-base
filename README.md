@@ -9,7 +9,7 @@
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?repo=hella-web3/hella-site-base)
 
-Base website for [Hella](https://www.hella.website/).  Built with Jekyll and barebones pure CSS/Sass and Javascript.
+Base website for [Hella](https://hellalabs.dev).  Built with Jekyll and barebones pure CSS/Sass and Javascript.
 
 </div>
 
@@ -83,7 +83,7 @@ gh workflow run jekyll.yml
 gh run list --workflow="jekyll.yml"
 ``` 
 
-Visit [https://www.hella.website/](https://www.hella.website/) after workflow run completes.
+Visit [https://hellalabs.dev](https://hellalabs.dev) after the workflow run completes.
 
 ---
 
@@ -113,8 +113,8 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 
 _Made with ❤️ by the Hella Labs team_
 
-Accelerating the transition to a Web3 future.
+Speeding up the transition to a Web3 future.
 
-Release: 0.0.3
+Release: 0.0.4
 
 </div>
