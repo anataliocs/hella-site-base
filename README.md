@@ -49,8 +49,8 @@ rbenv init
 
 **Install ruby**
 ```terminaloutput
-rbenv install 3.4.3
-rbenv global 3.4.3
+rbenv install 3.4.11
+rbenv global 3.4.11
 ```
 
 **Update bundler**

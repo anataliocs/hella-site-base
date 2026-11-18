@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     GEM_PATH=/usr/local/rvm/gems/default:/usr/local/rvm/gems/default@global \
     GEM_HOME=/usr/local/rvm/gems/default \
     MY_RUBY_HOME=/usr/local/rvm/rubies/default \
-    RUBY_VERSION=3.4.3
+    RUBY_VERSION=3.4.11
 
 WORKDIR /home/vscode/workspace/hella-site-base
 RUN chmod 775 -R .
@@ -20,8 +20,8 @@ RUN export PATH="/usr/local/rvm:/usr/local/rvm/bin/rvm":$PATH
 RUN echo "export PATH='/usr/local/rvm/bin/rvm:$PATH'" >> ~/.zshrc
 RUN echo "export PATH='/usr/local/rvm/bin/rvm:$PATH'" >> ~/.bashrc
 
-RUN /usr/local/rvm/bin/rvm install 3.4.3 && /usr/local/rvm/bin/rvm automount 3.4.3 \
- && /usr/local/rvm/bin/rvm use 3.4.3 && gem install bundler:2.6.7
+RUN /usr/local/rvm/bin/rvm install 3.4.11 && /usr/local/rvm/bin/rvm automount 3.4.11 \
+ && /usr/local/rvm/bin/rvm use 3.4.11 && gem install bundler:2.6.7
 
 RUN export PATH="~/.bundle":$PATH
 
