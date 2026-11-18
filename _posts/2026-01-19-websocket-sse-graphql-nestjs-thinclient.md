@@ -596,6 +596,77 @@ export class WsConnect {
 
 ----
 
+### E2E Test Automation with Foundry Anvil Testcontainers
+
+Testing blockchain applications end-to-end can be challenging, especially when you need a reliable, isolated Ethereum node for your test suite. Our [Foundry Anvil Testcontainers](https://github.com/anataliocs/foundry-anvil-testcontainer) provide a powerful solution for E2E test automation.
+
+#### Why Foundry Anvil Testcontainers?
+
+**Foundry Anvil** is a local Ethereum node optimized for development and testing. By packaging it as a **Testcontainer**, you get:
+
+- **Isolated Test Environments**: Each test suite runs against a fresh blockchain instance
+- **Fast Execution**: Anvil's optimized performance means rapid block mining and transaction processing
+- **Deterministic Testing**: Consistent blockchain state across test runs
+- **CI/CD Ready**: Works seamlessly in containerized build environments
+- **Zero Configuration**: Automatically manages container lifecycle
+
+#### Integration with the NestJS Backend
+
+The Foundry Anvil Testcontainer integrates perfectly with the NestJS architecture demonstrated in this article:
+
+**Example Test Setup:**
+
+```typescript
+import { AnvilContainer } from '@testcontainers/foundry-anvil';
+
+describe('Ethers WebSocket E2E Tests', () => {
+  let anvilContainer: AnvilContainer;
+  let rpcUrl: string;
+
+  beforeAll(async () => {
+    // Start Anvil testcontainer
+    anvilContainer = await new AnvilContainer().start();
+    rpcUrl = anvilContainer.getRpcUrl();
+
+    // Configure NestJS app with test RPC endpoint
+    const moduleFixture = await Test.createTestingModule({
+      imports: [
+        EthersSdkModule.registerAsync({
+          useFactory: () => ({
+            network: 'localhost',
+            rpcServerUrl: rpcUrl,
+          }),
+        }),
+      ],
+    }).compile();
+  });
+
+  afterAll(async () => {
+    await anvilContainer.stop();
+  });
+
+  it('should stream finalized blocks via websocket', async () => {
+    // Your E2E test logic here
+  });
+});
+```
+
+#### Real-World Testing Scenarios
+
+With Foundry Anvil Testcontainers, you can test:
+
+- **WebSocket Event Streams**: Verify block finalization events are emitted correctly
+- **Transaction Flows**: Test complete user journeys from transaction submission to confirmation
+- **Contract Interactions**: Deploy and interact with smart contracts in a controlled environment
+- **Error Handling**: Simulate network failures and validate recovery mechanisms
+- **Performance**: Measure WebSocket throughput and latency under load
+
+This approach ensures your reactive blockchain application behaves correctly in production, catching integration issues that unit tests might miss.
+
+Learn more about our [Foundry Anvil Testcontainers](https://github.com/anataliocs/foundry-anvil-testcontainer) and start building robust E2E test suites today.
+
+----
+
 ### Conclusion
 
 Thanks for reading!
@@ -633,4 +704,30 @@ The modular, reactive approach demonstrated here provides a clear example of a u
 scale efficiently with a snappy, responsive UX.
 
 _Thanks again for reading and be sure to post your comments below!_
+
+----
+
+<div class="cta-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 3rem; border-radius: 12px; text-align: center; color: white; margin: 2rem 0;">
+
+<h2 style="color: white; margin-bottom: 1.5rem;">Ready to Ship with Confidence?</h2>
+
+<p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem;">
+Whether you're building a DeFi protocol, NFT marketplace, or the next breakthrough Web3 application, <strong>comprehensive lifecycle testing is non-negotiable</strong>. Foundry Anvil Testcontainers makes it easier than ever to implement the testing strategy your users deserve.
+</p>
+
+<p style="font-size: 1.05rem; line-height: 1.6; margin-bottom: 2rem;">
+Our automation strategies reduce your time-to-market while increasing the reliability of your protocol. This open-source project is just a glimpse of what we can deliver for your team.
+</p>
+
+<p style="font-size: 1rem; line-height: 1.6; margin-bottom: 2.5rem;">
+Get expert guidance on implementing lifecycle tests, building robust CI/CD pipelines, or developing custom Web3 tooling for your protocol.
+</p>
+
+<a href="/contact/" class="button button--primary" style="display: inline-block; background: white; color: #667eea; padding: 1rem 2.5rem; border-radius: 8px; text-decoration: none; font-weight: bold; margin-bottom: 1.5rem; transition: transform 0.2s;">Get a DevOps Audit</a>
+
+<br/>
+
+<a href="/web3-consultant-service-offerings/" style="color: white; text-decoration: underline; font-size: 1rem;">Explore All Service Offerings →</a>
+
+</div>
 

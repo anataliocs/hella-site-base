@@ -34,18 +34,27 @@ sitemap: true
                 <div class="archive-page__collection">
                   {% for post in month_group.items %}
                   <div class="archive-article">
-                    <h3 class="archive-article__title">
-                      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                    </h3>
-                    <div class="archive-article__meta">
-                      <time class="archive-article__date" datetime="{{ post.date | date_to_xmlschema }}">{% assign date_format = site.minima.date_format | default: "%d %-b, %Y" %}{{ post.date | date: date_format }}</time>
-                      <div class="archive-article__minutes">
-                        {% assign words = post.content | number_of_words %}
-                        {% if words < 360 %}
-                          1 min read
-                        {% else %}
-                          {{ words | divided_by:180 }} min read
-                        {% endif %}
+                    {% if post.image %}
+                    <div class="archive-article__image">
+                      <a href="{{ post.url | relative_url }}">
+                        <img src="{{ post.image }}" alt="{{ post.title }}">
+                      </a>
+                    </div>
+                    {% endif %}
+                    <div class="archive-article__content">
+                      <h3 class="archive-article__title">
+                        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                      </h3>
+                      <div class="archive-article__meta">
+                        <time class="archive-article__date" datetime="{{ post.date | date_to_xmlschema }}">{% assign date_format = site.minima.date_format | default: "%d %-b, %Y" %}{{ post.date | date: date_format }}</time>
+                        <div class="archive-article__minutes">
+                          {% assign words = post.content | number_of_words %}
+                          {% if words < 360 %}
+                            1 min read
+                          {% else %}
+                            {{ words | divided_by:180 }} min read
+                          {% endif %}
+                        </div>
                       </div>
                     </div>
                   </div>

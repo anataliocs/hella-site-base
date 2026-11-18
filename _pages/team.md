@@ -1,6 +1,5 @@
 ---
 layout: page
-title: Hella Team
 permalink: /team/
 image: '/images/teamwork.jpg'
 sitemap: true
@@ -8,6 +7,7 @@ sitemap: true
 
 <div class="team-header">
   <i class="fa-solid fa-users"></i>
+  <h1>Hella Team</h1>
 </div>
 
 ----
@@ -35,26 +35,24 @@ We don't just build applications—we build the **testing infrastructure** and *
 Veteran distributed systems engineer with 12+ years of experience specializing in cloud-native, containerized microservices deployed via a CI/CD pipeline. Currently Senior Backend Blockchain Engineer at Uphold, with previous experience at Stellar Development Foundation and ConsenSys (Infura).
 
 #### Professional Experience & Achievements
-- **Polkadot Blockchain Academy** - Cohort 7 Bali Graduate
+- **Polkadot Blockchain Academy—**Cohort 7 Bali Graduate
 - **Developer DAO** - Member #4727
 - **Conference Speaker** - ETH Denver 2023 & 2024, ETH Seattle 2022, ETH CC 2022, Devcon 2022 & 2024
-- **GitHub Achievements** - Arctic Code Vault Contributor, Pull Shark x3, Pair Extraordinaire x2, Starstruck, Quickdraw
 - **945+ GitHub Stars** across 206 repositories
 
 #### Featured Talk
 [![ETH Denver Talk](https://img.youtube.com/vi/nyhw-KNx12k/mqdefault.jpg)](https://youtu.be/nyhw-KNx12k?si=px1TGNLTH_O8wnTe)
 *ETH Denver 2024 - Decentralized Infrastructure and Web3 Development*
 
-#### Technical Education Author
+#### Technical Education
 
-**LinkedIn Learning Courses:**
+##### LinkedIn Learning Courses
 - [Building a Reactive App with Angular and Spring Boot 2](https://www.linkedin.com/learning/building-a-reactive-app-with-angular-and-spring-boot-2) (2019)
-- Reactive Spring (2018)
-- Reactive Programming with Java 8 (2018)
-- JHipster: Build and Deploy Spring Boot Microservices (2018)
-- Building a Full-Stack App with Angular 2+ and Spring Boot (2017)
+and many others
 
-**Pluralsight Courses:**
+<br>
+
+##### Pluralsight Courses
 - [Web3 Infrastructure Development Tools](https://www.pluralsight.com/courses/web3-infrastructure-development-tools)
 - Smart Contract Development with Hardhat, Foundry, ethers.js, TypeScript, and Solidity
 
@@ -132,7 +130,7 @@ At Hella Labs, we combine Silicon Valley expertise with global talent efficiency
   <div class="benefit-item">
     <i class="fa-solid fa-graduation-cap"></i>
     <h4>Tech-Savvy Workforce</h4>
-    <p>Philippines ranks highly in English proficiency and has a thriving tech education ecosystem producing skilled developers.</p>
+    <p>The Philippines ranks highly in English proficiency and has a thriving tech education ecosystem producing skilled developers.</p>
   </div>
 
   <div class="benefit-item">
@@ -165,6 +163,11 @@ Whether you need to rapidly scale your development capacity, establish a sustain
   color: var(--primary-color, #4643ec);
   margin-bottom: 1rem;
   display: block;
+}
+
+.team-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
 }
 
 
