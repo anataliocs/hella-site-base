@@ -36,20 +36,45 @@
         <form class="form" action="{% if site.data.settings.contact.form_id %}https://formspree.io/f/{{site.data.settings.contact.form_id}}{% else %}#{% endif %}" method="POST">
           <div class="form__group">
             <label class="form__label screen-reader-text" for="form-name">Name</label>
-            <input class="form__input" id="form-name" type="text" name="name" placeholder="name" required>
+            <input class="form__input" id="form-name" type="text" name="name" placeholder="Name" required>
           </div>
           <div class="form__group">
             <label class="form__label screen-reader-text" for="form-email">Email</label>
             <input class="form__input" id="form-email" type="email" name="_replyto" placeholder="Email" required>
           </div>
           <div class="form__group">
+            <label class="form__label screen-reader-text" for="form-inquiry">Inquiry Type</label>
+            <select class="form__input" id="form-inquiry" name="inquiry_type" required>
+              <option value="">Select Inquiry Type</option>
+              <option value="Consulting">Consulting</option>
+              <option value="Fractional Engineering">Fractional Engineering</option>
+              <option value="Questions">Questions</option>
+              <option value="OSS">OSS</option>
+              <option value="Events">Events</option>
+            </select>
+          </div>
+          <div class="form__group">
             <label class="form__label screen-reader-text" for="form-text">Message</label>
-            <textarea class="form__input" id="form-text" name="text" rows="5" placeholder="Message" required></textarea>
+            <textarea class="form__input" id="form-text" name="text" rows="5" placeholder="What do you want to build today?" required></textarea>
           </div>
           <div class="form__group">
             <button class="button button--primary" type="submit">{{ site.data.settings.contact.button_text }}</button>
           </div>
         </form>
+
+        <div class="contact__social">
+          <p class="contact__social__title">Connect with us</p>
+          <div class="contact__social__links">
+            <a href="https://t.me/hella_web3" target="_blank" rel="noopener" aria-label="Telegram" class="contact__social__link">
+              <i class="fa-brands fa-telegram"></i>
+            </a>
+            {% for item in site.data.settings.social %}
+            <a href="{{ item.link }}" target="_blank" rel="noopener" aria-label="{{ item.name }}" class="contact__social__link">
+              <i class="{{ item.icon }}"></i>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
       </div>
 
     </div>

@@ -105,6 +105,51 @@
     .contact__description {
       margin: 12px 0 0;
     }
+
+    .contact__social {
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-color);
+
+      .contact__social__title {
+        margin: 0 0 16px;
+        font-family: $heading-font-family;
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--heading-font-color);
+      }
+
+      .contact__social__links {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .contact__social__link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        background: var(--background-alt-color-2);
+        color: var(--heading-font-color);
+        text-decoration: none;
+        transition: all 0.2s ease;
+
+        &:hover {
+          transform: translateY(-2px);
+          border-color: var(--primary-color);
+          color: var(--primary-color);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        i {
+          font-size: 20px;
+        }
+      }
+    }
   }
 
   @media (max-width: $wide) {
