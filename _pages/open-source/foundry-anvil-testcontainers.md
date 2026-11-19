@@ -109,11 +109,125 @@ Development teams using this module report:
 
 <hr class="section-divider">
 
+## Code Examples
+
+### Complete Test Example
+
+A full test suite showing the power of the module:
+
+```typescript
+import {
+  AnvilContainer,
+  AnvilOptions,
+  Hardfork,
+  useAnvil,
+} from "@hellaweb3/foundryanvil-testcontainers-nodejs";
+import { parseEther } from "viem";
+
+const options = new AnvilOptions().account
+  .withAccounts(5)
+  .withBalance(1_000) // ETH per dev account
+  .evm.withChainId(1337)
+  .withHardfork(Hardfork.Cancun)
+  .logs.quiet();
+
+// Starts in beforeAll, stops in afterAll, restores the state after every test.
+const anvil = useAnvil(
+  new AnvilContainer(options).withTestClient((client) => client.withAccount(0)),
+);
+
+it("sends Ether", async () => {
+  const [, bob] = await anvil.addresses();
+  // No `account` needed: dev account 0 is the typed default signer.
+  const receipt = await anvil.confirm(
+    anvil.testClient.sendTransaction({ to: bob, value: parseEther("1") }),
+  );
+  expect(receipt.status).toBe("success");
+  expect(await anvil.testClient.getChainId()).toBe(1337);
+});
+
+it("manipulates the chain fluently", async () => {
+  const whale = "0x1111111111111111111111111111111111111111";
+  await anvil.cheats
+    .setBalanceEther(whale, 1_000)
+    .impersonate(whale)
+    .increaseTime({ days: 7 })
+    .mine();
+  expect(await anvil.getBalance(whale)).toBe(parseEther("1000"));
+});
+```
+
+### Impersonate Accounts and Fund Whales
+
+Perfect for testing complex DeFi scenarios:
+
+```typescript
+// Act as any address and fund it instantly
+const whale = "0x1111111111111111111111111111111111111111";
+await anvil.cheats
+  .setBalanceEther(whale, 1_000)
+  .impersonate(whale)
+  .mine();
+
+// Now execute transactions as the whale
+await anvil.testClient.sendTransaction({
+  account: whale,
+  to: recipient,
+  value: parseEther("100")
+});
+```
+
+### Time Travel and Block Control
+
+Fast-forward time to test time-dependent contracts:
+
+```typescript
+// Jump 7 days into the future
+await anvil.cheats
+  .increaseTime({ days: 7 })
+  .mine();
+
+// Set exact timestamps and control block building
+await anvil.cheats
+  .setNextBlockTimestamp(futureTimestamp)
+  .mine({ blocks: 10 });
+```
+
+### Fork Mainnet for Testing
+
+Test against real mainnet state:
+
+```typescript
+const options = new AnvilOptions()
+  .fork.withUrl(mainnetRpcUrl)
+  .fork.withBlockNumber(latestBlock);
+
+const anvil = await new AnvilContainer(options).start();
+
+// Now you're working with a local fork of mainnet
+// Make any changes without affecting the real chain
+```
+
+### Mock Smart Contract Dependencies
+
+Replace contract code on the fly:
+
+```typescript
+// Deploy mock code at a specific address
+await anvil.cheats
+  .setCode(contractAddress, mockBytecode)
+  .mine();
+
+// Perfect for testing integrations without dependencies
+```
+
+<hr class="section-divider">
+
 ## Resources
 
 - **GitHub Repository:** [hella-web3/foundryanvil-testcontainers-nodejs](https://github.com/hella-web3/foundryanvil-testcontainers-nodejs)
 - **NPM Package:** [@hellaweb3/foundryanvil-testcontainers-nodejs](https://www.npmjs.com/package/@hellaweb3/foundryanvil-testcontainers-nodejs)
-- **Documentation:** [Full API Documentation](https://github.com/hella-web3/foundryanvil-testcontainers-nodejs#readme)
+- **Documentation:** [Complete Task Guides & API Reference](https://hella-web3.github.io/foundryanvil-testcontainers-nodejs/)
 
 ---
 

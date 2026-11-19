@@ -142,7 +142,25 @@
   <link rel="dns-prefetch" href="//www.google-analytics.com">
   <link rel="preconnect" href="https://www.google-analytics.com">
 
-  <!-- Preload critical CSS and swap to stylesheet -->
-  <link rel="preload" href="{{ '/css/main.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}"></noscript>
+  <!-- Critical inline CSS to prevent FOUC -->
+  <style>
+    .logo__image,
+    .logo__image__dark {
+      max-height: 50px;
+      height: 50px;
+      width: auto;
+    }
+    .logo__image__dark {
+      display: none;
+    }
+    .dark-mode .logo__image {
+      display: none;
+    }
+    .dark-mode .logo__image__dark {
+      display: block;
+    }
+  </style>
+
+  <!-- Load critical CSS synchronously -->
+  <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
 </head>
